@@ -20,34 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="closeread_try_files/libs/clipboard/clipboard.min.js"></script>
-<script src="closeread_try_files/libs/quarto-html/quarto.js"></script>
-<script src="closeread_try_files/libs/quarto-html/popper.min.js"></script>
-<script src="closeread_try_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="closeread_try_files/libs/quarto-html/anchor.min.js"></script>
-<link href="closeread_try_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="closeread_try_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="closeread_try_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="closeread_try_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="closeread_try_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="closeread_try_files/libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
-<script src="closeread_try_files/libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
-<script src="closeread_try_files/libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
+<script src="example_files/libs/clipboard/clipboard.min.js"></script>
+<script src="example_files/libs/quarto-html/quarto.js"></script>
+<script src="example_files/libs/quarto-html/popper.min.js"></script>
+<script src="example_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="example_files/libs/quarto-html/anchor.min.js"></script>
+<link href="example_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="example_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="example_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="example_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="example_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="example_files/libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="example_files/libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="example_files/libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <meta cr-debug-mode="false">
 <meta cr-remove-header-space="false">
 
 
 <link rel="stylesheet" href="_extensions/qmd-lab/closeread/closeread.css">
+<link rel="stylesheet" href="index-styles.css">
 </head>
 
 <body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
 
-<main class="content column-page" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -56,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -70,6 +105,82 @@ ul.task-list li input[type="checkbox"] {
 
 <p>closeread is a custom format for <a href="https://quarto.org/">Quarto</a> that enables scrollytelling features for html documents.</p>
 <p>Install the extension by running the following command in the directory you wish to use it:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add qmd-lab/closeread</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With the extension installed, you can author documents using the <code>closeread-html</code> format:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> My First Closeread</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> closeread-html</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+<br>
+</p>
+<div class="cr-section column-screen overlay-center">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-doc">
+<div class="narrative">
+<p>Get your first closeread doc up and running in four steps.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-doc">
+<div class="narrative">
+<p>Step one: create a qmd file and set the format to closeread-html.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-doc">
+<div class="narrative">
+<p>Step two: open up a closeread section.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-doc">
+<div class="narrative">
+<p>Step three: flag an element to become a sticky.</p>
+</div>
+</div>
+<div class="trigger new-trigger" style="padding-bottom: 100dvh" data-focus-on="cr-doc" data-highlight="12">
+<div class="narrative">
+<div data-focus-on="cr-doc">
+<p>Step four: create a trigger to make the sticky appear.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-doc" class="sticky">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>myfirstcr.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> My First Closeread</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> closeread-html</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Hello World! Please read my closeread story below.</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>:::{.cr-section}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>Closeread enables scrollytelling.</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>Draw your readers attention with: @cr-features</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>:::{#cr-features}</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Highlighting</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Zooming</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Panning</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br>
+<br>
+<br>
+</p>
+<p>For guidance on how to author closeread documents, read the <a href="guide/index.qmd">Guide</a>. For examples of closeread documents alongside their source, see the <a href="gallery/index.qmd">Gallery</a>. For a catalog of the syntax and yaml options used in the closeread extension, see the <a href="reference/index.qmd">Reference</a>.</p>
 
 </main>
 <!-- /main column -->
