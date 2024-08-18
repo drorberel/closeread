@@ -4,6 +4,8 @@ format:
   closeread-html:
     theme: cosmo
     css: index-styles.css
+    remove-header-space: true
+    code-tools: true
 ---
 
 closeread is a custom format for [Quarto](https://quarto.org/) that enables scrollytelling features for html documents.
